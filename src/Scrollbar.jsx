@@ -6,22 +6,7 @@ import "./Scrollbar.css";
 
 function Scrollbar() {
 
-  const [scrollbarValue, setScrollbarValue] = useState(0);
-
-  const handleScrollbarChange = (event) => {
-    setScrollbarValue(parseInt(event.target.value));
-  };
-
-
-  const scrollbarThumbStyle = {
-    width: `${scrollbarValue*4.8}% `,
-  };
-  
-
  
-  const getParagraphText = () => {
-    return  scrollbarValue;
-  };
   
 
 
@@ -29,13 +14,12 @@ function Scrollbar() {
     <div className="content">
       <div className="characters">
         <p>Character Length</p>
-        <p>{getParagraphText()}</p>
+        <p></p>
       </div>
       <div className="slide-container">
-        <div id="slider-track" style={scrollbarThumbStyle}></div>
+        <div id="slider-track" ></div>
 
-        <input type="range" min="0" max="20" className="slider" id="range"   value={scrollbarValue}
-        onChange={handleScrollbarChange}/>
+        <input type="range" min="0" max="20" className="slider" id="range"  />
       </div>
     </div>
   );
