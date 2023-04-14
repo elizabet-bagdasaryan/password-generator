@@ -158,8 +158,8 @@ function Strength() {
           </div>
         </div>
         <form>
-          <label for="uppercase" class="container">
-            Include Uppercase Letters
+          <label class="container">
+            <label for="uppercase">Include Uppercase Letters</label>
             <input
               checked={includeUpper}
               onChangeCapture={(e) => setIncludeUpper(e.target.checked)}
@@ -172,8 +172,8 @@ function Strength() {
             <span class="checkmark"></span>
           </label>
 
-          <label for="lowercase" class="container">
-            Include Lowercase Letters
+          <label class="container">
+            <label for="lowercase">Include Lowercase Letters</label>
             <input
               checked={includeLower}
               onChangeCapture={(e) => setIncludeLower(e.target.checked)}
@@ -186,8 +186,8 @@ function Strength() {
             <span class="checkmark"></span>
           </label>
 
-          <label for="numbers" class="container">
-            Include Numbers
+          <label class="container">
+            <label for="numbers">Include Numbers</label>
             <input
               checked={includeNumber}
               onChangeCapture={(e) => setIncludeNumber(e.target.checked)}
@@ -200,8 +200,8 @@ function Strength() {
             <span class="checkmark"></span>
           </label>
 
-          <label for="symbols" class="container">
-            Include Symbols
+          <label class="container">
+            <label for="symbols">Include Symbols</label>
             <input
               checked={includeSymbol}
               onChangeCapture={(e) => setIncludeSymbol(e.target.checked)}

@@ -1,5 +1,8 @@
 label {
   color: #e6e5ea;
+  cursor: pointer;
+
+  font-size: 18px;
 }
 
 .container {
@@ -13,7 +16,6 @@ label {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font-size: 18px;
 }
 
 .container input {
@@ -35,7 +37,6 @@ label {
   display: flex;
   justify-content: center;
   margin-top: 8px;
-  
 }
 
 .container:hover input ~ .checkmark {
@@ -77,7 +78,6 @@ label {
   width: 10px;
 }
 
-
 button {
   background-color: #a4ffaf;
   color: #18171f;
@@ -91,79 +91,75 @@ button {
   align-items: center;
 }
 
-
-
 button:hover {
   border: 2px solid #a4ffaf;
   color: #a4ffaf;
   background-color: #24232c;
-  cursor:pointer
+  cursor: pointer;
 }
 
 .img-container img {
-  width:100%;
+  width: 100%;
   margin: auto;
-  margin-bottom:32px
-;margin-top:30px
+  margin-bottom: 32px;
+  margin-top: 30px;
 }
 
-.points{
-  margin-top:50px;
+.points {
+  margin-top: 50px;
   background-color: #24232c;
   width: 80vw;
   margin: auto;
   padding: 20px;
 }
 
-.main div{
-  color:#E6E5EA;
-  font-size:18px
+.main div {
+  color: #e6e5ea;
+  font-size: 18px;
 }
-#copied{
-  display:flex
+#copied {
+  display: flex;
 }
-#copied div:nth-child(1){
-  color:#a4ffaf;
-  font-size:18px;
-  font-weight:600
-
-}
-
-#placeholder{
-  color:#E6E5EA;
-  opacity:0.25
+#copied div:nth-child(1) {
+  color: #a4ffaf;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-@media(min-width: 768px){
-   .container{
-    font-size:24px
-   }
-   .img-container img{
-    height:88px
-   }
-   .points{
-    width:60vw
-   }
+#placeholder {
+  color: #e6e5ea;
+  opacity: 0.25;
+}
 
-   .main div{
-    font-size:20px
+@media (min-width: 768px) {
+  .img-container img {
+    height: 88px;
+  }
+  .points {
+    width: 60vw;
   }
 
-  #copied div:nth-child(1){
- 
-    font-size:18px;
-  
+  .main div {
+    font-size: 20px;
+  }
+
+  #copied div:nth-child(1) {
+    font-size: 18px;
+  }
+  label {
+    font-size: 24px;
   }
 }
 
-@media(min-width: 1336px){
-  .main div{
-    font-size:30px
+@media (min-width: 1336px) {
+  .main div {
+    font-size: 30px;
   }
 
-  .points{
-    width:800px
+  .points {
+    width: 800px;
   }
- 
-
+  label {
+    margin-left: 10px;
+  }
 }
