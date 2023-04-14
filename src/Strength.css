@@ -28,13 +28,14 @@ label {
   position: absolute;
   top: 0;
   left: 0;
-  height: 8px;
-  width: 8px;
+  height: 6px;
+  width: 6px;
   background-color: #18171f;
   border: 2px solid #e6e5ea;
   display: flex;
   justify-content: center;
   margin-top: 8px;
+  
 }
 
 .container:hover input ~ .checkmark {
@@ -100,11 +101,38 @@ button:hover {
 }
 
 .img-container img {
-  width: 100%;
+  width:100%;
   margin: auto;
   margin-bottom:32px
+;margin-top:30px
 }
 
+.points{
+  margin-top:50px;
+  background-color: #24232c;
+  width: 80vw;
+  margin: auto;
+  padding: 20px;
+}
+
+.main div{
+  color:#E6E5EA;
+  font-size:18px
+}
+#copied{
+  display:flex
+}
+#copied div:nth-child(1){
+  color:#a4ffaf;
+  font-size:18px;
+  font-weight:600
+
+}
+
+#placeholder{
+  color:#E6E5EA;
+  opacity:0.25
+}
 
 @media(min-width: 768px){
    .container{
@@ -113,4 +141,29 @@ button:hover {
    .img-container img{
     height:88px
    }
+   .points{
+    width:60vw
+   }
+
+   .main div{
+    font-size:20px
+  }
+
+  #copied div:nth-child(1){
+ 
+    font-size:18px;
+  
+  }
+}
+
+@media(min-width: 1336px){
+  .main div{
+    font-size:30px
+  }
+
+  .points{
+    width:800px
+  }
+ 
+
 }

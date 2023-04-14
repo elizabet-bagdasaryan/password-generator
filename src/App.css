@@ -1,6 +1,10 @@
 body {
-  background: linear-gradient(180deg, #14131B 0%, #08070B 100%);;
+  background: linear-gradient(180deg, #14131b 0%, #08070b 100%);
   padding: 0.5vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
 
 .generator-text {
@@ -10,41 +14,25 @@ body {
   margin-top: 64px;
 }
 
-.func-section {
-  background-color: #24232c;
-  width: 80vw;
-  margin: auto;
-  padding: 20px;
-  margin-top: 24px;
+@media (min-width: 768px) {
+  body {
+    padding: 10vw;
+  }
+
+  .generator-text {
+    margin: auto;
+    margin-bottom: 32px;
+  }
 }
 
-
-
-@media(min-width: 768px){
-  body{
-    padding:10vw
+@media (min-width: 1336px) {
+  body {
+    padding: 5vw 20vw;
   }
 
-  .func-section{
-    width:60vw
+  .generator-text {
+    margin: auto;
+    margin-bottom: 32px;
+    margin-top: -20px;
   }
-  .generator-text{
-    margin:auto;margin-bottom:32px
-  }
- 
-}
-
-@media(min-width: 1336px){
-  body{
-    padding:5vw 20vw
-  }
-
-  .func-section{
-    width:48vw
-  }
-  .generator-text{
-    margin:auto;
-    margin-bottom:32px
-  }
- 
 }
