@@ -3,13 +3,30 @@ import Strong from "./assets/strong.png";
 import Medium from "./assets/medium.png";
 import Weak from "./assets/weak.png";
 import TooWeak from "./assets/tooweak.png";
+import Empty from "./assets/empty.png";
+import FileCopyOutlinedIcon from "@mui/icons-material/FileCopyOutlined";
 
-
+import "./Strength.css";
+import "./Password.css";
+import "./Scrollbar.css";
 
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import "./Strength.css";
+import { upperCase, lowerCase, numbers, symbols } from "./characters";
 
 function Strength() {
+  const [scrollbarValue, setScrollbarValue] = useState(0);
+
+  const handleScrollbarChange = (event) => {
+    setScrollbarValue(parseInt(event.target.value));
+  };
+
+  const scrollbarThumbStyle = {
+    width: `${scrollbarValue * 4.8}% `,
+  };
+
+  const getParagraphText = () => {
+    return scrollbarValue;
+  };
   const [checkedBoxes, setCheckedBoxes] = useState([]);
 
   const handleCheckboxChange = (event) => {
@@ -31,67 +48,177 @@ function Strength() {
       return <img src={Medium} />;
     } else if (numChecked === 4) {
       return <img src={Strong} />;
+    } else if (numChecked === 0) {
+      return <img src={Empty} />;
     }
   };
 
-  const generatePsw = (e)=>{
+  const [password, setPassword] = useState("");
+  const [includeUpper, setIncludeUpper] = useState(false);
+  const [includeLower, setIncludeLower] = useState(false);
+  const [includeNumber, setIncludeNumber] = useState(false);
+  const [includeSymbol, setIncludeSymbol] = useState(false);
 
+  const generatePsw = (e) => {
+    let charList = " ";
+    if (includeUpper) {
+      charList = charList + upperCase;
+    }
+
+    if (includeLower) {
+      charList = charList + lowerCase;
+    }
+
+    if (includeNumber) {
+      charList = charList + numbers;
+    }
+
+    if (includeSymbol) {
+      charList = charList + symbols;
+    }
+
+    setPassword(createPassword(charList));
+  };
+
+  const createPassword = (charList) => {
+    let passwordd = " ";
+    const charListLength = charList.length;
+
+    for (let i = 0; i < scrollbarValue; i++) {
+      const charIndex = Math.round(Math.random() * charListLength);
+      passwordd = passwordd + charList.charAt(charIndex);
+    }
+    return passwordd;
+  };
+  const [isClicked, setIsClicked] = useState(false);
+  const [isGenerated, setIsGenerated] = useState(false);
+
+  function handleGenerate() {
+    setIsGenerated(true);
   }
+
+  function handleClick() {
+    setIsClicked(true);
+    setTimeout(() => {
+      setIsClicked(false);
+    }, 3000);
+  }
+
+  const copy = () => {
+    const newTxtArea = document.createElement("textarea");
+    newTxtArea.innerHTML = password;
+    document.body.appendChild(newTxtArea);
+    newTxtArea.select();
+    document.execCommand("copy");
+    newTxtArea.remove();
+  };
+  const copyPsw = (e) => {
+    copy();
+  };
+
+  const handleBoth = () => {
+    handleClick();
+    copyPsw();
+  };
+
+  const handleButton = () => {
+    handleGenerate();
+    generatePsw();
+  };
+
   return (
-    <div className="points">
-      <form>
-        <label for="uppercase" class="container">
-          Include Uppercase Letters
-          <input
-            type="checkbox"
-            id="uppercase"
-            name="uppercase"
-            value="upper"
-            onChange={handleCheckboxChange}
-          />
-          <span class="checkmark"></span>
-        </label>
+    <div className="body">
+      <div className="main">
+        {isGenerated && <div>{password}</div>}
+        {!isGenerated && <div id="placeholder">P4$5W0rD!</div>}
+        <div id="copied">
+          {isClicked && <div>COPIED</div>}
+          <FileCopyOutlinedIcon className="logo" onClick={handleBoth} />
+        </div>
+      </div>
 
-        <label for="lowercase" class="container">
-          Include Lowercase Letters
-          <input
-            type="checkbox"
-            id="lowercase"
-            name="lowercase"
-            value="lower"
-            onChange={handleCheckboxChange}
-          />
-          <span class="checkmark"></span>
-        </label>
+      <div className="points">
+        <div className="content">
+          <div className="characters">
+            <p>Character Length</p>
+            <p>{getParagraphText()}</p>
+          </div>
+          <div className="slide-container">
+            <div id="slider-track" style={scrollbarThumbStyle}></div>
 
-        <label for="numbers" class="container">
-          Include Numbers
-          <input
-            type="checkbox"
-            id="numbers"
-            name="numbers"
-            value="nums"
-            onChange={handleCheckboxChange}
-          />
-          <span class="checkmark"></span>
-        </label>
+            <input
+              type="range"
+              min="0"
+              max="20"
+              className="slider"
+              id="range"
+              value={scrollbarValue}
+              onChange={handleScrollbarChange}
+            />
+          </div>
+        </div>
+        <form>
+          <label for="uppercase" class="container">
+            Include Uppercase Letters
+            <input
+              checked={includeUpper}
+              onChangeCapture={(e) => setIncludeUpper(e.target.checked)}
+              type="checkbox"
+              id="uppercase"
+              name="uppercase"
+              value="upper"
+              onChange={handleCheckboxChange}
+            />
+            <span class="checkmark"></span>
+          </label>
 
-        <label for="symbols" class="container">
-          Include Symbols
-          <input
-            type="checkbox"
-            id="symbols"
-            name="symbols"
-            value="sym"
-            onChange={handleCheckboxChange}
-          />
-          <span class="checkmark"></span>
-        </label>
-      </form>
-      <div className="img-container">{getImage()}</div>
-      <button onClick={generatePsw}>
-        <p>GENERATE </p> <ArrowForwardIcon className="arrow" />
-      </button>
+          <label for="lowercase" class="container">
+            Include Lowercase Letters
+            <input
+              checked={includeLower}
+              onChangeCapture={(e) => setIncludeLower(e.target.checked)}
+              type="checkbox"
+              id="lowercase"
+              name="lowercase"
+              value="lower"
+              onChange={handleCheckboxChange}
+            />
+            <span class="checkmark"></span>
+          </label>
+
+          <label for="numbers" class="container">
+            Include Numbers
+            <input
+              checked={includeNumber}
+              onChangeCapture={(e) => setIncludeNumber(e.target.checked)}
+              type="checkbox"
+              id="numbers"
+              name="numbers"
+              value="nums"
+              onChange={handleCheckboxChange}
+            />
+            <span class="checkmark"></span>
+          </label>
+
+          <label for="symbols" class="container">
+            Include Symbols
+            <input
+              checked={includeSymbol}
+              onChangeCapture={(e) => setIncludeSymbol(e.target.checked)}
+              type="checkbox"
+              id="symbols"
+              name="symbols"
+              value="sym"
+              onChange={handleCheckboxChange}
+            />
+            <span class="checkmark"></span>
+          </label>
+        </form>
+        <div className="img-container">{getImage()}</div>
+        <button onClick={handleButton}>
+          <p>GENERATE </p> <ArrowForwardIcon className="arrow" />
+        </button>
+      </div>
     </div>
   );
 }
