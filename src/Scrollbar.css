@@ -1,6 +1,7 @@
 .slide-container {
   width: 98%;
   position: relative;
+  
 }
 
 .slider {
@@ -11,6 +12,7 @@
   outline: none;
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
+
 }
 
 .slider::-webkit-scrollbar-track {
@@ -31,6 +33,12 @@
   transform: scale(1.9) rotateZ(var(--thumb-rotate, 0deg));
   border-radius: 50%;
   cursor: pointer;
+}
+
+
+.slider::-webkit-slider-thumb:hover{
+  background-color: #18171f;
+  border:1.5px solid #a4ffaf;
 }
 
 #slider-track {
@@ -78,4 +86,5 @@
     height:24px;
     width:24px
   }
+  
 }
