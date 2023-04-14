@@ -4,44 +4,44 @@ import Medium from "./assets/medium.png";
 import Weak from "./assets/weak.png";
 import TooWeak from "./assets/tooweak.png";
 
+
+
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "./Strength.css";
 
 function Strength() {
-    const [checkedBoxes, setCheckedBoxes] = useState([]);
+  const [checkedBoxes, setCheckedBoxes] = useState([]);
 
-    const handleCheckboxChange = (event) => {
-        const { value, checked } = event.target;
-        if (checked) {
-          setCheckedBoxes([...checkedBoxes, value]);
-        } else {
-          setCheckedBoxes(checkedBoxes.filter((item) => item !== value));
-        }
-      };
+  const handleCheckboxChange = (event) => {
+    const { value, checked } = event.target;
+    if (checked) {
+      setCheckedBoxes([...checkedBoxes, value]);
+    } else {
+      setCheckedBoxes(checkedBoxes.filter((item) => item !== value));
+    }
+  };
 
-      const getImage = () => {
-        const numChecked = checkedBoxes.length;
-        if (numChecked === 1) {
-          return <img src={TooWeak} />;
-        } else if (numChecked === 2) {
-          return <img src={Weak} />;
-        } else if (numChecked === 3) {
-          return <img src={Medium} />;
-        } else if (numChecked === 4) {
-            return <img src={Strong} />;
-          } 
-      }
+  const getImage = () => {
+    const numChecked = checkedBoxes.length;
+    if (numChecked === 1) {
+      return <img src={TooWeak} />;
+    } else if (numChecked === 2) {
+      return <img src={Weak} />;
+    } else if (numChecked === 3) {
+      return <img src={Medium} />;
+    } else if (numChecked === 4) {
+      return <img src={Strong} />;
+    }
+  };
 
+  const generatePsw = (e)=>{
 
-
-
-
-
+  }
   return (
     <div className="points">
       <form>
-        <div class="container">
-          <label for="uppercase">Include Uppercase Letters</label>
+        <label for="uppercase" class="container">
+          Include Uppercase Letters
           <input
             type="checkbox"
             id="uppercase"
@@ -50,9 +50,10 @@ function Strength() {
             onChange={handleCheckboxChange}
           />
           <span class="checkmark"></span>
-        </div>
-        <div class="container">
-          <label for="lowercase">Include Lowercase Letters</label>
+        </label>
+
+        <label for="lowercase" class="container">
+          Include Lowercase Letters
           <input
             type="checkbox"
             id="lowercase"
@@ -61,22 +62,34 @@ function Strength() {
             onChange={handleCheckboxChange}
           />
           <span class="checkmark"></span>
-        </div>
-        <div class="container">
-          <label for="numbers">Include Numbers</label>
-          <input type="checkbox" id="numbers" name="numbers" value="nums"  onChange={handleCheckboxChange} />
+        </label>
+
+        <label for="numbers" class="container">
+          Include Numbers
+          <input
+            type="checkbox"
+            id="numbers"
+            name="numbers"
+            value="nums"
+            onChange={handleCheckboxChange}
+          />
           <span class="checkmark"></span>
-        </div>
-        <div class="container">
-          <label for="symbols">Include Symbols</label>
-          <input type="checkbox" id="symbols" name="symbols" value="sym"  onChange={handleCheckboxChange} />
+        </label>
+
+        <label for="symbols" class="container">
+          Include Symbols
+          <input
+            type="checkbox"
+            id="symbols"
+            name="symbols"
+            value="sym"
+            onChange={handleCheckboxChange}
+          />
           <span class="checkmark"></span>
-        </div>
+        </label>
       </form>
-      <div className="img-container">
-      {getImage()}
-      </div>
-      <button>
+      <div className="img-container">{getImage()}</div>
+      <button onClick={generatePsw}>
         <p>GENERATE </p> <ArrowForwardIcon className="arrow" />
       </button>
     </div>
