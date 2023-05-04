@@ -15,7 +15,7 @@ body {
 
 @media (min-width: 768px) {
   body {
-    padding: 10vw;
+    padding: 20vw;
   }
 
   .generator-text {
@@ -26,11 +26,13 @@ body {
 
 @media (min-width: 1336px) {
   body {
-    padding: 5vw 20vw;
+    padding: 5vw 0;
   }
 
   .generator-text {
+    width: 100%;
     margin: auto;
+
     margin-bottom: 32px;
     margin-top: -20px;
   }

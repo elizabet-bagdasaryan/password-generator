@@ -89,8 +89,8 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin:auto;
-  margin-bottom:18px
+  margin: auto;
+  margin-bottom: 18px;
 }
 
 button:hover {
@@ -112,7 +112,7 @@ button:hover {
   background-color: #24232c;
   width: 80vw;
   margin: auto;
-  padding: 20px;
+  padding: 10px;
 }
 
 .main div {
@@ -159,16 +159,16 @@ button:hover {
   }
 
   .points {
-    width: 800px;
+    width: 40vw;
+    margin: auto;
   }
   label {
     margin-left: 10px;
   }
-  button{
-    width:98%
+  button {
+    width: 98%;
   }
-  .img-container img{
-    margin-left:-1%
- 
+  .img-container img {
+    margin-left: -1%;
   }
 }

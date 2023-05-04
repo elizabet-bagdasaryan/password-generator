@@ -90,6 +90,8 @@ function Strength() {
     }
     return passwordd;
   };
+
+
   const [isClicked, setIsClicked] = useState(false);
   const [isGenerated, setIsGenerated] = useState(false);
 
@@ -104,6 +106,11 @@ function Strength() {
     }, 3000);
   }
 
+  const handleBoth = () => {
+    handleClick();
+    copyPsw();
+  };
+
   const copy = () => {
     const newTxtArea = document.createElement("textarea");
     newTxtArea.innerHTML = password;
@@ -116,10 +123,7 @@ function Strength() {
     copy();
   };
 
-  const handleBoth = () => {
-    handleClick();
-    copyPsw();
-  };
+
 
   const handleButton = () => {
     handleGenerate();
@@ -128,14 +132,14 @@ function Strength() {
 
   return (
     <div className="body">
-      <div className="main">
-        {isGenerated && <div>{password}</div>}
-        {!isGenerated && <div id="placeholder">P4$5W0rD!</div>}
-        <div id="copied">
-          {isClicked && <div>COPIED</div>}
-          <FileCopyOutlinedIcon className="logo" onClick={handleBoth} />
-        </div>
-      </div>
+          <div className="main">
+          {isGenerated && <div>{password}</div>}
+          {!isGenerated && <div id="placeholder">P4$5W0rD!</div>}
+           <div id="copied">
+           {isClicked && <div>COPIED</div>}
+            <FileCopyOutlinedIcon className="logo" onClick={handleBoth} />
+    </div>
+  </div>
 
       <div className="points">
         <div className="content">
